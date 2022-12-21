@@ -3,12 +3,15 @@ import { createStore } from 'vuex'
 const store = createStore({
     state() {
         return {
+            mobile_menu: false,
             cur_position: null,
             cur_todo: {},
             todo_list: [],
         }
     },
     mutations: {
+        openMenu(state) { state.mobile_menu = true },
+        closeMenu(state) { state.mobile_menu = false },
         setPosition(state, position) {
             state.cur_position = position;
             state.cur_todo = state.todo_list[state.cur_position];
@@ -51,6 +54,7 @@ const store = createStore({
         },
     },
     getters: {
+        getMenuStatus(state) { return state.mobile_menu },
         getTodoLength(state) {
             return state.todo_list.length
         },

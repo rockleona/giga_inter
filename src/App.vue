@@ -4,7 +4,7 @@ import Editor from "./components/Editor.vue";
 </script>
 
 <template>
-  <div class="w-full h-screen flex">
+  <div class="w-full h-screen flex relative">
     <Sidebar />
     <Editor />
   </div>
