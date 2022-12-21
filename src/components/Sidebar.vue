@@ -9,9 +9,10 @@
           <div
             v-for="(item, i) in getTodoList"
             :key="'item' + i"
+            @click="() => changeTodo(i)"
             class="p-3 bg-primary"
           >
-            <span>Hello</span>
+            <span>{{ item.title }}</span>
           </div>
         </div>
       </div>
@@ -20,7 +21,7 @@
           @click="addTodo"
           class="bg-main text-center rounded-lg font-semibold w-full py-1"
           :class="{
-            'text-disable' : !this.addStatus
+            'text-disable': !this.addStatus,
           }"
         >
           Add Item
@@ -55,6 +56,9 @@ export default {
       if (this.addStatus) {
         this.$store.commit("addTodo");
       }
+    },
+    changeTodo(index) {
+      this.$store.commit("setPosition", index);
     },
   },
 };
